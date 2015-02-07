@@ -44,26 +44,6 @@ test( 'asNavFor', function( assert ) {
     flktyB.activate();
     equal( flktyB.selectedIndex, 2, 'B reactivated with selectedIndex' );
     ok( classie.has( bCellElements[2], 'is-nav-selected' ), 'third cell element has nav selected class' );
-    /*
-    // usync()
-    flktyA.unsync('#sync-b');
-    flktyA.select( 1 );
-    equal( flktyB.selectedIndex, 3, 'A.unsync() unsyncs A from B' );
-    flktyB.select( 4 );
-    equal( flktyA.selectedIndex, 1, 'A.unsync() unsyncs B from A' );
-    // sync()
-    flktyB.sync('#sync-a');
-    flktyB.select( 0 );
-    equal( flktyA.selectedIndex, 0, 'B.sync() syncs B to A' );
-    flktyA.select( 2 );
-    equal( flktyB.selectedIndex, 2, 'B.sync() syncs A to B' );
-    // unsyncAll()
-    flktyA.unsyncAll();
-    flktyA.select( 1 );
-    equal( flktyB.selectedIndex, 2, 'A.unsyncAll() unsyncs A from B' );
-    flktyB.select( 4 );
-    equal( flktyA.selectedIndex, 1, 'A.unsyncAll() unsyncs B from A' );
-    */
 
     done();
   });

@@ -31,6 +31,7 @@
     "bower_components",
     "test",
     "tests",
-    "package.json"
+    "package.json",
+    "sandbox"
   ]
 }

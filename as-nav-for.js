@@ -41,7 +41,7 @@
 
 'use strict';
 
-// -------------------------- sync prototype -------------------------- //
+// -------------------------- asNavFor prototype -------------------------- //
 
 // Flickity.defaults.asNavFor = null;
 

@@ -1,4 +1,4 @@
-# Flickity sync
+# Flickity asNavFor
 
 Enables `asNavFor` option for [Flickity](http://flickity.metafizzy.co/), where one gallery is navigation or another.
 
