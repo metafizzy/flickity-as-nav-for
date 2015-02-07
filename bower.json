@@ -1,0 +1,36 @@
+{
+  "name": "flickity-as-nav-for",
+  "main": "as-nav-for.js",
+  "version": "0.1.0",
+  "description": "Enabled asForNav option for Flickity",
+  "dependencies": {
+    "flickity": "~0.2.0",
+    "classie": "~1.0.1",
+    "fizzy-ui-utils": "~0.1.1"
+  },
+  "devDependencies": {
+    "qunit": "~1.17.1",
+    "classie": "~1.0.1"
+  },
+  "authors": [
+    "David DeSandro"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "flickity"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/metafizzy/flickity-as-nav-for",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "package.json"
+  ]
+}
