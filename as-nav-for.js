@@ -66,7 +66,8 @@ Flickity.prototype._createAsNavFor = function() {
 Flickity.prototype.setNavCompanion = function( elem ) {
   elem = utils.getQueryElement( elem );
   var companion = Flickity.data( elem );
-  if ( !companion ) {
+  // stop if no companion or companion is self
+  if ( !companion || companion == this ) {
     return;
   }
 
