@@ -1,5 +1,5 @@
 /*!
- * Flickity asNavFor v0.1.0
+ * Flickity asNavFor v0.1.1
  * enable asNavFor for Flickity
  */
 
@@ -123,6 +123,9 @@ Flickity.prototype.deactivateAsNavFor = function() {
 };
 
 Flickity.prototype.destroyAsNavFor = function() {
+  if ( !this.navCompanion ) {
+    return;
+  }
   this.navCompanion.off( 'select', this.onNavCompanionSelect );
   this.off( 'staticClick', this.onNavStaticClick );
   delete this.navCompanion;

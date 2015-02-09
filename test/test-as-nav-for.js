@@ -45,6 +45,9 @@ test( 'asNavFor', function( assert ) {
     equal( flktyB.selectedIndex, 2, 'B reactivated with selectedIndex' );
     ok( classie.has( bCellElements[2], 'is-nav-selected' ), 'third cell element has nav selected class' );
 
+    flktyA.destroy();
+    flktyB.destroy();
+
     done();
   });
 

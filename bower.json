@@ -1,10 +1,10 @@
 {
   "name": "flickity-as-nav-for",
   "main": "as-nav-for.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Enabled asForNav option for Flickity",
   "dependencies": {
-    "flickity": "~0.2.0",
+    "flickity": "~0.2.1",
     "classie": "~1.0.1",
     "fizzy-ui-utils": "~0.1.1"
   },
