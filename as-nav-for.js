@@ -23,7 +23,7 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('dessandro-classie'),
+      require('desandro-classie'),
       require('flickity'),
       require('fizzy-ui-utils')
     );
