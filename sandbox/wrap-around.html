@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+
+  <title>asNavFor + wrapAround</title>
+
+  <link rel="stylesheet" href="../bower_components/flickity/css/flickity.css" />
+  <style>
+  body {
+    min-height: 1000px;
+  }
+  
+  .gallery {
+    border: 1px solid;
+    margin-bottom: 40px;
+  }
+
+  .cell {
+    height: 200px;
+    width: 66%;
+    margin: 0 5px;
+    background: #CCC;
+  }
+
+  .cell:nth-child(6n) { background: hsl(0, 80%, 70%); }
+  .cell:nth-child(6n+1) { background: hsl(60, 80%, 70%); }
+  .cell:nth-child(6n+2) { background: hsl(120, 80%, 70%); }
+  .cell:nth-child(6n+3) { background: hsl(180, 80%, 70%); }
+  .cell:nth-child(6n+4) { background: hsl(240, 80%, 70%); }
+  .cell:nth-child(6n+5) { background: hsl(300, 80%, 70%); }
+
+  .cell.is-selected {
+    outline: 10px solid hsla(0, 0%, 0%, 0.2);
+    outline-offset: -10px;
+  }
+
+  .cell.is-nav-selected {
+    outline: 10px solid hsla(0, 0%, 100%, 0.6);
+    outline-offset: -10px;
+  }
+
+  #gallery-b .cell {
+    width: 80px;
+    height: 80px;
+  }
+  </style>
+
+</head>
+<body>
+
+  <code class="output">0</code>
+
+  <div id="gallery-a" class="gallery js-flickity"
+    data-flickity-options='{ "wrapAround": false }'>
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+    <div class="cell">9</div>
+  </div>
+
+  <div id="gallery-b" class="gallery js-flickity"
+    data-flickity-options='{ "asNavFor": "#gallery-a", "contain": true, "wrapAround": true }'>
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+    <div class="cell">9</div>
+  </div>
+
+<script src="../bower_components/get-style-property/get-style-property.js"></script>
+<script src="../bower_components/get-size/get-size.js"></script>
+<script src="../bower_components/matches-selector/matches-selector.js"></script>
+<script src="../bower_components/eventEmitter/EventEmitter.js"></script>
+<script src="../bower_components/eventie/eventie.js"></script>
+<script src="../bower_components/doc-ready/doc-ready.js"></script>
+<script src="../bower_components/classie/classie.js"></script>
+<script src="../bower_components/unipointer/unipointer.js"></script>
+<script src="../bower_components/unidragger/unidragger.js"></script>
+<script src="../bower_components/tap-listener/tap-listener.js"></script>
+<script src="../bower_components/fizzy-ui-utils/utils.js"></script>
+
+<script src="../bower_components/flickity/js/cell.js"></script>
+<script src="../bower_components/flickity/js/animate.js"></script>
+<script src="../bower_components/flickity/js/flickity.js"></script>
+<script src="../bower_components/flickity/js/drag.js"></script>
+<script src="../bower_components/flickity/js/prev-next-button.js"></script>
+<script src="../bower_components/flickity/js/page-dots.js"></script>
+<script src="../bower_components/flickity/js/player.js"></script>
+<script src="../bower_components/flickity/js/add-remove-cell.js"></script>
+
+<script src="../as-nav-for.js"></script>
+
+<script>
+window.onload = function() {
+  var output = document.querySelector('.output');
+  var navFlkty = Flickity.data('#gallery-b');
+  navFlkty.on( 'staticClick', function( event, pointer, cellElem, index ) {
+    console.log( event.type )
+    // output.textContent = index + ', ' + Math.round( Date.now() / 1000 )
+  });
+
+  // function onSecondSelect() {
+  //   debugger;
+  // }
+  // var isSecondOn = false;
+  //
+  // navFlkty.on( 'cellSelect', function() {
+  //   output.textContent = 'cellSelect ' + navFlkty.selectedIndex;
+  //   setTimeout( function() {
+  //     if ( !isSecondOn ) {
+  //       navFlkty.on( 'cellSelect', onSecondSelect );
+  //       isSecondOn = true;
+  //     }
+  //
+  //   }, 10 );
+  //
+  //   setTimeout( function() {
+  //     navFlkty.off( 'cellSelect', onSecondSelect );
+  //     isSecondOn = false;
+  //   }, 800 );
+  // });
+
+
+}
+</script>
+
+</body>
+</html>
