@@ -5,7 +5,6 @@
   "main": "as-nav-for.js",
   "dependencies": {
     "flickity": "^1.0.0",
-    "desandro-classie": "^1.0.1",
     "fizzy-ui-utils": "^1.0.0"
   },
   "scripts": {

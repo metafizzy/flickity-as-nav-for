@@ -13,7 +13,6 @@
   if ( typeof define == 'function' && define.amd ) {
     // AMD
     define( [
-      'classie/classie',
       'flickity/js/index',
       'fizzy-ui-utils/utils'
     ], function( classie, Flickity, utils ) {
@@ -23,7 +22,6 @@
     // CommonJS
     module.exports = factory(
       window,
-      require('desandro-classie'),
       require('flickity'),
       require('fizzy-ui-utils')
     );
@@ -31,13 +29,12 @@
     // browser global
     window.Flickity = factory(
       window,
-      window.classie,
       window.Flickity,
       window.fizzyUIUtils
     );
   }
 
-}( window, function factory( window, classie, Flickity, utils ) {
+}( window, function factory( window, Flickity, utils ) {
 
 'use strict';
 
@@ -97,7 +94,7 @@ Flickity.prototype.navCompanionSelect = function() {
     return;
   }
   this.navSelectedElement = this.cells[ index ].element;
-  classie.add( this.navSelectedElement, 'is-nav-selected' );
+  this.navSelectedElement.classList.add('is-nav-selected');
 };
 
 Flickity.prototype.activateAsNavFor = function() {
@@ -108,7 +105,7 @@ Flickity.prototype.removeNavSelectedElement = function() {
   if ( !this.navSelectedElement ) {
     return;
   }
-  classie.remove( this.navSelectedElement, 'is-nav-selected' );
+  this.navSelectedElement.classList.remove('is-nav-selected');
   delete this.navSelectedElement;
 };
 
