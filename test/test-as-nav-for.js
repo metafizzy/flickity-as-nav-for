@@ -1,7 +1,7 @@
-/*jshint browser: true, unused: true */
-/*global test: false, ok: false, equal: false, Flickity: false, classie: false */
+/*jshint browser: true, unused: true, undef: true */
+/*globals Flickity, QUnit */
 
-test( 'asNavFor', function( assert ) {
+QUnit.test( 'asNavFor', function( assert ) {
   'use strict';
 
   var galleryB = document.querySelector('#gallery-b');
@@ -15,35 +15,39 @@ test( 'asNavFor', function( assert ) {
   // getting navCompanion is async
   var done = assert.async();
 
+  function containsNavSelectedClass( index ) {
+    return bCellElements[ index ].classList.contains('is-nav-selected');
+  }
+
   setTimeout( function() {
-    ok( classie.has( bCellElements[0], 'is-nav-selected' ), 'first cell element has nav selected class' );
+    assert.ok( containsNavSelectedClass(0), 'first cell element has nav selected class' );
 
     flktyA.next();
-    equal( flktyB.selectedIndex, 1, 'A.next() syncs to B' );
-    ok( classie.has( bCellElements[1], 'is-nav-selected' ), '2nd cell element has nav selected class' );
-    ok( !classie.has( bCellElements[0], 'is-nav-selected' ), '1st cell element does not have nav selected class' );
+    assert.equal( flktyB.selectedIndex, 1, 'A.next() syncs to B' );
+    assert.ok( containsNavSelectedClass(1), '2nd cell element has nav selected class' );
+    assert.ok( !containsNavSelectedClass(0), '1st cell element does not have nav selected class' );
     flktyA.previous();
-    equal( flktyB.selectedIndex, 0, 'A.previous() syncs to B' );
+    assert.equal( flktyB.selectedIndex, 0, 'A.previous() syncs to B' );
     flktyA.select( 3 );
-    equal( flktyB.selectedIndex, 3, 'A.select() syncs to B' );
-    ok( classie.has( bCellElements[3], 'is-nav-selected' ), 'fourth cell element has nav selected class' );
-    ok( !classie.has( bCellElements[0], 'is-nav-selected' ), '1st cell element does not have nav selected class' );
+    assert.equal( flktyB.selectedIndex, 3, 'A.select() syncs to B' );
+    assert.ok( containsNavSelectedClass(3), 'fourth cell element has nav selected class' );
+    assert.ok( !containsNavSelectedClass(0), '1st cell element does not have nav selected class' );
     // click
     // fake trigger staticClick event
     flktyB.staticClick({
       target: bCellElements[2]
     });
-    equal( flktyA.selectedIndex, 2, 'B.staticClick selects A' );
-    equal( flktyB.selectedIndex, 2, 'B.staticClick selects B' );
-    ok( classie.has( bCellElements[2], 'is-nav-selected' ), 'third cell element has nav selected class' );
-    ok( !classie.has( bCellElements[0], 'is-nav-selected' ), '1st cell element does not have nav selected class' );
+    assert.equal( flktyA.selectedIndex, 2, 'B.staticClick selects A' );
+    assert.equal( flktyB.selectedIndex, 2, 'B.staticClick selects B' );
+    assert.ok( containsNavSelectedClass(2), 'third cell element has nav selected class' );
+    assert.ok( !containsNavSelectedClass(3), '4th cell element does not have nav selected class' );
 
     flktyB.deactivate();
-    ok( !galleryB.querySelector('.is-nav-selected'), 'no is-nav-selected after deactivate' );
+    assert.ok( !galleryB.querySelector('.is-nav-selected'), 'no is-nav-selected after deactivate' );
 
     flktyB.activate();
-    equal( flktyB.selectedIndex, 2, 'B reactivated with selectedIndex' );
-    ok( classie.has( bCellElements[2], 'is-nav-selected' ), 'third cell element has nav selected class' );
+    assert.equal( flktyB.selectedIndex, 2, 'B reactivated with selectedIndex' );
+    assert.ok( containsNavSelectedClass(2), 'third cell element has nav selected class' );
 
     flktyA.destroy();
     flktyB.destroy();

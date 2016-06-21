@@ -4,22 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
 
-  <title>asNavFor + wrapAround</title>
+  <title>groupCells</title>
 
   <link rel="stylesheet" href="../bower_components/flickity/css/flickity.css" />
   <style>
-  body {
-    min-height: 1000px;
-  }
-  
   .gallery {
     border: 1px solid;
     margin-bottom: 40px;
   }
-
+  
   .cell {
     height: 200px;
-    width: 66%;
+    width: 40%;
     margin: 0 5px;
     background: #CCC;
   }
@@ -42,18 +38,18 @@
   }
 
   #gallery-b .cell {
-    width: 80px;
-    height: 80px;
+    width: 240px;
+    height: 180px;
   }
   </style>
 
 </head>
 <body>
 
-  <code class="output">0</code>
+  <h1>groupCells</h1>
 
-  <div id="gallery-a" class="gallery js-flickity"
-    data-flickity-options='{ "wrapAround": false }'>
+  <div id="gallery-a" class="gallery"
+    data-flickity='{ "groupCells": false }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>
@@ -65,8 +61,8 @@
     <div class="cell">9</div>
   </div>
 
-  <div id="gallery-b" class="gallery js-flickity"
-    data-flickity-options='{ "asNavFor": "#gallery-a", "contain": true, "wrapAround": true }'>
+  <div id="gallery-b" class="gallery"
+    data-flickity='{ "asNavFor": "#gallery-a", "groupCells": 3 }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>
@@ -97,37 +93,6 @@
 <script src="../bower_components/flickity/js/add-remove-cell.js"></script>
 
 <script src="../as-nav-for.js"></script>
-
-<script>
-  var output = document.querySelector('.output');
-  var navFlkty = Flickity.data('#gallery-b');
-  navFlkty.on( 'staticClick', function( event, pointer, cellElem, index ) {
-    console.log( event.type )
-    // output.textContent = index + ', ' + Math.round( Date.now() / 1000 )
-  });
-
-  // function onSecondSelect() {
-  //   debugger;
-  // }
-  // var isSecondOn = false;
-  //
-  // navFlkty.on( 'cellSelect', function() {
-  //   output.textContent = 'cellSelect ' + navFlkty.selectedIndex;
-  //   setTimeout( function() {
-  //     if ( !isSecondOn ) {
-  //       navFlkty.on( 'cellSelect', onSecondSelect );
-  //       isSecondOn = true;
-  //     }
-  //
-  //   }, 10 );
-  //
-  //   setTimeout( function() {
-  //     navFlkty.off( 'cellSelect', onSecondSelect );
-  //     isSecondOn = false;
-  //   }, 800 );
-  // });
-
-</script>
 
 </body>
 </html>

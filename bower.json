@@ -1,14 +1,13 @@
 {
   "name": "flickity-as-nav-for",
   "main": "as-nav-for.js",
-  "version": "1.0.4",
   "description": "Enabled asForNav option for Flickity",
   "dependencies": {
-    "flickity": "^1.0.0",
-    "fizzy-ui-utils": "^1.0.0"
+    "flickity": "v2",
+    "fizzy-ui-utils": "^2.0.0"
   },
   "devDependencies": {
-    "qunit": "~1.17.1"
+    "qunit": "^1.17.1"
   },
   "authors": [
     "David DeSandro"

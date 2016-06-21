@@ -1,15 +1,13 @@
 /*!
- * Flickity asNavFor v1.0.4
+ * Flickity asNavFor v2.0.0
  * enable asNavFor for Flickity
  */
 
 /*jshint browser: true, undef: true, unused: true, strict: true*/
 
 ( function( window, factory ) {
-  /*global define: false, module: false, require: false */
-  'use strict';
   // universal module definition
-
+  /*jshint strict: false */ /*globals define, module, require */
   if ( typeof define == 'function' && define.amd ) {
     // AMD
     define( [
@@ -18,7 +16,7 @@
     ], function( classie, Flickity, utils ) {
       return factory( window, classie, Flickity, utils );
     });
-  } else if ( typeof exports == 'object' ) {
+  } else if ( typeof module == 'object' && module.exports ) {
     // CommonJS
     module.exports = factory(
       window,
@@ -74,7 +72,7 @@ Flickity.prototype.setNavCompanion = function( elem ) {
   this.onNavCompanionSelect = function() {
     _this.navCompanionSelect();
   };
-  companion.on( 'cellSelect', this.onNavCompanionSelect );
+  companion.on( 'select', this.onNavCompanionSelect );
   // click
   this.on( 'staticClick', this.onNavStaticClick );
 
@@ -85,45 +83,53 @@ Flickity.prototype.navCompanionSelect = function() {
   if ( !this.navCompanion ) {
     return;
   }
-  var index = this.navCompanion.selectedIndex;
-  this.select( index );
+  // select slide that matches first cell of slide
+  var selectedCell = this.navCompanion.selectedCells[0];
+  var cellIndex = this.navCompanion.cells.indexOf( selectedCell );
+  this.selectCell( cellIndex );
   // set nav selected class
-  this.removeNavSelectedElement();
+  this.removeNavSelectedElements();
   // stop if companion has more cells than this one
-  if ( this.selectedIndex != index ) {
+  if ( cellIndex >= this.cells.length ) {
     return;
   }
-  this.navSelectedElement = this.cells[ index ].element;
-  this.navSelectedElement.classList.add('is-nav-selected');
+  this.navSelectedElements = this.slides[ this.selectedIndex ].getCellElements();
+  this.changeNavSelectedClass('add');
+};
+
+Flickity.prototype.changeNavSelectedClass = function( method ) {
+  this.navSelectedElements.forEach( function( navElem ) {
+    navElem.classList[ method ]('is-nav-selected');
+  });
 };
 
 Flickity.prototype.activateAsNavFor = function() {
   this.navCompanionSelect();
 };
 
-Flickity.prototype.removeNavSelectedElement = function() {
-  if ( !this.navSelectedElement ) {
+Flickity.prototype.removeNavSelectedElements = function() {
+  if ( !this.navSelectedElements ) {
     return;
   }
-  this.navSelectedElement.classList.remove('is-nav-selected');
-  delete this.navSelectedElement;
+  this.changeNavSelectedClass('remove');
+  delete this.navSelectedElements;
 };
 
 Flickity.prototype.onNavStaticClick = function( event, pointer, cellElement, cellIndex ) {
   if ( typeof cellIndex == 'number' ) {
-    this.navCompanion.select( cellIndex );
+    this.navCompanion.selectCell( cellIndex );
   }
 };
 
 Flickity.prototype.deactivateAsNavFor = function() {
-  this.removeNavSelectedElement();
+  this.removeNavSelectedElements();
 };
 
 Flickity.prototype.destroyAsNavFor = function() {
   if ( !this.navCompanion ) {
     return;
   }
-  this.navCompanion.off( 'cellSelect', this.onNavCompanionSelect );
+  this.navCompanion.off( 'select', this.onNavCompanionSelect );
   this.off( 'staticClick', this.onNavStaticClick );
   delete this.navCompanion;
 };
