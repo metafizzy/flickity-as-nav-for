@@ -4,13 +4,13 @@
 QUnit.test( 'asNavFor', function( assert ) {
   'use strict';
 
-  var galleryB = document.querySelector('#gallery-b');
-  var flktyB = new Flickity( galleryB, {
-    asNavFor: '#gallery-a'
+  var carouselB = document.querySelector('#carousel-b');
+  var flktyB = new Flickity( carouselB, {
+    asNavFor: '#carousel-a'
   });
-  var bCellElements = galleryB.querySelectorAll('.cell');
+  var bCellElements = carouselB.querySelectorAll('.cell');
 
-  var flktyA = new Flickity('#gallery-a');
+  var flktyA = new Flickity('#carousel-a');
 
   // getting navCompanion is async
   var done = assert.async();
@@ -43,14 +43,11 @@ QUnit.test( 'asNavFor', function( assert ) {
     assert.ok( !containsNavSelectedClass(3), '4th cell element does not have nav selected class' );
 
     flktyB.deactivate();
-    assert.ok( !galleryB.querySelector('.is-nav-selected'), 'no is-nav-selected after deactivate' );
+    assert.ok( !carouselB.querySelector('.is-nav-selected'), 'no is-nav-selected after deactivate' );
 
     flktyB.activate();
     assert.equal( flktyB.selectedIndex, 2, 'B reactivated with selectedIndex' );
     assert.ok( containsNavSelectedClass(2), 'third cell element has nav selected class' );
-
-    flktyA.destroy();
-    flktyB.destroy();
 
     done();
   });

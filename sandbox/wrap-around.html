@@ -12,7 +12,7 @@
     min-height: 1000px;
   }
   
-  .gallery {
+  .carousel {
     border: 1px solid;
     margin-bottom: 40px;
   }
@@ -41,7 +41,7 @@
     outline-offset: -10px;
   }
 
-  #gallery-b .cell {
+  #carousel-b .cell {
     width: 80px;
     height: 80px;
   }
@@ -52,7 +52,7 @@
 
   <code class="output">0</code>
 
-  <div id="gallery-a" class="gallery js-flickity"
+  <div id="carousel-a" class="carousel js-flickity"
     data-flickity-options='{ "wrapAround": false }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
@@ -65,8 +65,8 @@
     <div class="cell">9</div>
   </div>
 
-  <div id="gallery-b" class="gallery js-flickity"
-    data-flickity-options='{ "asNavFor": "#gallery-a", "contain": true, "wrapAround": true }'>
+  <div id="carousel-b" class="carousel js-flickity"
+    data-flickity-options='{ "asNavFor": "#carousel-a", "contain": true, "wrapAround": true }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>
@@ -100,7 +100,7 @@
 
 <script>
   var output = document.querySelector('.output');
-  var navFlkty = Flickity.data('#gallery-b');
+  var navFlkty = Flickity.data('#carousel-b');
   navFlkty.on( 'staticClick', function( event, pointer, cellElem, index ) {
     console.log( event.type )
     // output.textContent = index + ', ' + Math.round( Date.now() / 1000 )

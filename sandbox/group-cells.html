@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="../bower_components/flickity/css/flickity.css" />
   <style>
-  .gallery {
+  .carousel {
     border: 1px solid;
     margin-bottom: 40px;
   }
@@ -37,7 +37,7 @@
     outline-offset: -10px;
   }
 
-  #gallery-b .cell {
+  #carousel-b .cell {
     width: 240px;
     height: 180px;
   }
@@ -48,7 +48,7 @@
 
   <h1>groupCells</h1>
 
-  <div id="gallery-a" class="gallery"
+  <div id="carousel-a" class="carousel"
     data-flickity='{ "groupCells": false }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
@@ -61,8 +61,8 @@
     <div class="cell">9</div>
   </div>
 
-  <div id="gallery-b" class="gallery"
-    data-flickity='{ "asNavFor": "#gallery-a", "groupCells": 3 }'>
+  <div id="carousel-b" class="carousel"
+    data-flickity='{ "asNavFor": "#carousel-a", "groupCells": 3 }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>

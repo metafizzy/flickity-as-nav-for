@@ -14,19 +14,24 @@
       color: #333;
     }
 
-    .gallery {
+    .carousel {
       border: 1px solid;
       width: 400px;
       margin-bottom: 40px;
     }
 
-    .gallery .cell {
+    .carousel .cell {
       width: 70%;
       height: 100px;
       background: #F09;
       font-size: 40px;
       color: white;
       margin-right: 10px;
+    }
+
+    /* fit 3 in carousel */
+    .carousel--group-cells-nav .cell {
+      width: 28%;
     }
   </style>
 
@@ -56,6 +61,7 @@
   </script>
   <!-- unit tests -->
   <script src="test-as-nav-for.js"></script>
+  <script src="group-cells.js"></script>
 
 </head>
 <body>
@@ -63,7 +69,7 @@
   <div id="qunit"></div>
 
   <h2>asNavFor</h2>
-  <div id="gallery-a" class="gallery variable-width">
+  <div id="carousel-a" class="carousel">
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>
@@ -72,13 +78,37 @@
     <div class="cell">6</div>
   </div>
 
-  <div id="gallery-b" class="gallery variable-width">
+  <div id="carousel-b" class="carousel">
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>
     <div class="cell">4</div>
     <div class="cell">5</div>
     <div class="cell">6</div>
+  </div>
+
+  <h2>groupCells</h2>
+
+  <div class="carousel carousel--group-cells">
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+  </div>
+
+  <div class="carousel carousel--group-cells-nav">
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
   </div>
 
 </body>
