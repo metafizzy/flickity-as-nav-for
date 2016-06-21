@@ -42,7 +42,9 @@
 
 Flickity.createMethods.push('_createAsNavFor');
 
-Flickity.prototype._createAsNavFor = function() {
+var proto = Flickity.prototype;
+
+proto._createAsNavFor = function() {
   this.on( 'activate', this.activateAsNavFor );
   this.on( 'deactivate', this.deactivateAsNavFor );
   this.on( 'destroy', this.destroyAsNavFor );
@@ -58,7 +60,7 @@ Flickity.prototype._createAsNavFor = function() {
   });
 };
 
-Flickity.prototype.setNavCompanion = function( elem ) {
+proto.setNavCompanion = function( elem ) {
   elem = utils.getQueryElement( elem );
   var companion = Flickity.data( elem );
   // stop if no companion or companion is self
@@ -79,7 +81,7 @@ Flickity.prototype.setNavCompanion = function( elem ) {
   this.navCompanionSelect();
 };
 
-Flickity.prototype.navCompanionSelect = function() {
+proto.navCompanionSelect = function() {
   if ( !this.navCompanion ) {
     return;
   }
@@ -97,17 +99,17 @@ Flickity.prototype.navCompanionSelect = function() {
   this.changeNavSelectedClass('add');
 };
 
-Flickity.prototype.changeNavSelectedClass = function( method ) {
+proto.changeNavSelectedClass = function( method ) {
   this.navSelectedElements.forEach( function( navElem ) {
     navElem.classList[ method ]('is-nav-selected');
   });
 };
 
-Flickity.prototype.activateAsNavFor = function() {
+proto.activateAsNavFor = function() {
   this.navCompanionSelect();
 };
 
-Flickity.prototype.removeNavSelectedElements = function() {
+proto.removeNavSelectedElements = function() {
   if ( !this.navSelectedElements ) {
     return;
   }
@@ -115,17 +117,17 @@ Flickity.prototype.removeNavSelectedElements = function() {
   delete this.navSelectedElements;
 };
 
-Flickity.prototype.onNavStaticClick = function( event, pointer, cellElement, cellIndex ) {
+proto.onNavStaticClick = function( event, pointer, cellElement, cellIndex ) {
   if ( typeof cellIndex == 'number' ) {
     this.navCompanion.selectCell( cellIndex );
   }
 };
 
-Flickity.prototype.deactivateAsNavFor = function() {
+proto.deactivateAsNavFor = function() {
   this.removeNavSelectedElements();
 };
 
-Flickity.prototype.destroyAsNavFor = function() {
+proto.destroyAsNavFor = function() {
   if ( !this.navCompanion ) {
     return;
   }
