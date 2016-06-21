@@ -7,7 +7,7 @@
     "fizzy-ui-utils": "^2.0.0"
   },
   "devDependencies": {
-    "qunit": "^1.17.1"
+    "qunit": "^2.0.0"
   },
   "authors": [
     "David DeSandro"
