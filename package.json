@@ -7,6 +7,7 @@
     "flickity": "^2.0.0",
     "fizzy-ui-utils": "^2.0.0"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Open test/ in browser\" && exit 1"
   },
@@ -24,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/desandro/flickity-as-nav-for/issues"
   },
-  "homepage": "https://github.com/desandro/flickity-as-nav-for"
+  "homepage": "https://github.com/desandro/flickity-as-nav-for",
+  "directories": {
+    "test": "test"
+  }
 }

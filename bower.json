@@ -1,9 +1,9 @@
 {
   "name": "flickity-as-nav-for",
+  "description": "Enable asForNav for Flickity",
   "main": "as-nav-for.js",
-  "description": "Enabled asForNav option for Flickity",
   "dependencies": {
-    "flickity": "v2",
+    "flickity": "^2.0.0",
     "fizzy-ui-utils": "^2.0.0"
   },
   "devDependencies": {
@@ -11,11 +11,6 @@
   },
   "authors": [
     "David DeSandro"
-  ],
-  "moduleType": [
-    "amd",
-    "globals",
-    "node"
   ],
   "keywords": [
     "flickity"
