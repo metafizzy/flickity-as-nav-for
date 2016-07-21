@@ -20,19 +20,25 @@
       margin-bottom: 40px;
     }
 
-    .carousel .cell {
+    .cell {
       width: 70%;
       height: 100px;
-      background: #F09;
+      background: #8C8;
       font-size: 40px;
       color: white;
       margin-right: 10px;
+      border-radius: 5px;
     }
 
+    .cell.is-selected { background: #ED2; }
+    .cell.is-nav-selected { background: #19F; }
+
     /* fit 3 in carousel */
-    .carousel--group-cells-nav .cell {
-      width: 28%;
-    }
+    .carousel--group-cells-nav .cell { width: 28%; }
+
+    .carousel--group-main .cell { width: 28%;}
+
+    .carousel--group-main-nav .cell { width: 19%; }
   </style>
 
   <script src="../bower_components/qunit/qunit/qunit.js"></script>
@@ -62,6 +68,7 @@
   <!-- unit tests -->
   <script src="test-as-nav-for.js"></script>
   <script src="group-cells.js"></script>
+  <script src="group-main.js"></script>
 
 </head>
 <body>
@@ -101,6 +108,30 @@
   </div>
 
   <div class="carousel carousel--group-cells-nav">
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+  </div>
+
+  <h2>groupCells main</h2>
+
+  <div class="carousel carousel--group-main">
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+  </div>
+
+  <div class="carousel carousel--group-main-nav">
     <div class="cell">1</div>
     <div class="cell">2</div>
     <div class="cell">3</div>

@@ -1,5 +1,5 @@
 /*!
- * Flickity asNavFor v2.0.0
+ * Flickity asNavFor v2.0.1
  * enable asNavFor for Flickity
  */
 
@@ -13,26 +13,22 @@
     define( [
       'flickity/js/index',
       'fizzy-ui-utils/utils'
-    ], function( classie, Flickity, utils ) {
-      return factory( window, classie, Flickity, utils );
-    });
+    ], factory );
   } else if ( typeof module == 'object' && module.exports ) {
     // CommonJS
     module.exports = factory(
-      window,
       require('flickity'),
       require('fizzy-ui-utils')
     );
   } else {
     // browser global
     window.Flickity = factory(
-      window,
       window.Flickity,
       window.fizzyUIUtils
     );
   }
 
-}( window, function factory( window, Flickity, utils ) {
+}( window, function factory( Flickity, utils ) {
 
 'use strict';
 
@@ -78,26 +74,37 @@ proto.setNavCompanion = function( elem ) {
   // click
   this.on( 'staticClick', this.onNavStaticClick );
 
-  this.navCompanionSelect();
+  this.navCompanionSelect( true );
 };
 
-proto.navCompanionSelect = function() {
+proto.navCompanionSelect = function( isInstant ) {
   if ( !this.navCompanion ) {
     return;
   }
   // select slide that matches first cell of slide
   var selectedCell = this.navCompanion.selectedCells[0];
-  var cellIndex = this.navCompanion.cells.indexOf( selectedCell );
-  this.selectCell( cellIndex );
+  var firstIndex = this.navCompanion.cells.indexOf( selectedCell );
+  var lastIndex = firstIndex + this.navCompanion.selectedCells.length - 1;
+  var selectIndex = Math.floor( lerp( firstIndex, lastIndex,
+    this.navCompanion.cellAlign ) );
+  this.selectCell( selectIndex, false, isInstant );
   // set nav selected class
   this.removeNavSelectedElements();
   // stop if companion has more cells than this one
-  if ( cellIndex >= this.cells.length ) {
+  if ( selectIndex >= this.cells.length ) {
     return;
   }
-  this.navSelectedElements = this.slides[ this.selectedIndex ].getCellElements();
+
+  var selectedCells = this.cells.slice( firstIndex, lastIndex + 1 );
+  this.navSelectedElements = selectedCells.map( function( cell ) {
+    return cell.element;
+  });
   this.changeNavSelectedClass('add');
 };
+
+function lerp( a, b, t ) {
+  return ( b - a ) * t + a;
+}
 
 proto.changeNavSelectedClass = function( method ) {
   this.navSelectedElements.forEach( function( navElem ) {
@@ -106,7 +113,7 @@ proto.changeNavSelectedClass = function( method ) {
 };
 
 proto.activateAsNavFor = function() {
-  this.navCompanionSelect();
+  this.navCompanionSelect( true );
 };
 
 proto.removeNavSelectedElements = function() {

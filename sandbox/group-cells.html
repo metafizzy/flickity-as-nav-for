@@ -12,41 +12,40 @@
     border: 1px solid;
     margin-bottom: 40px;
   }
-  
+
   .cell {
     height: 200px;
     width: 40%;
     margin: 0 5px;
-    background: #CCC;
+    background: #8C8;
+    font-size: 40px;
+    color: white;
+    border-radius: 5px;
   }
 
-  .cell:nth-child(6n) { background: hsl(0, 80%, 70%); }
-  .cell:nth-child(6n+1) { background: hsl(60, 80%, 70%); }
-  .cell:nth-child(6n+2) { background: hsl(120, 80%, 70%); }
-  .cell:nth-child(6n+3) { background: hsl(180, 80%, 70%); }
-  .cell:nth-child(6n+4) { background: hsl(240, 80%, 70%); }
-  .cell:nth-child(6n+5) { background: hsl(300, 80%, 70%); }
-
   .cell.is-selected {
-    outline: 10px solid hsla(0, 0%, 0%, 0.2);
-    outline-offset: -10px;
+    background: #ED2;
   }
 
   .cell.is-nav-selected {
-    outline: 10px solid hsla(0, 0%, 100%, 0.6);
-    outline-offset: -10px;
+    background: #19F;
   }
 
-  #carousel-b .cell {
+  .carousel--nav .cell {
     width: 240px;
     height: 180px;
   }
+
+  #carousel-c .cell { width: 28%; }
+  #carousel-c .cell--width2 { width: 45%; }
   </style>
 
 </head>
 <body>
 
   <h1>groupCells</h1>
+
+  <h2>Nav grouped</h2>
 
   <div id="carousel-a" class="carousel"
     data-flickity='{ "groupCells": false }'>
@@ -61,7 +60,7 @@
     <div class="cell">9</div>
   </div>
 
-  <div id="carousel-b" class="carousel"
+  <div id="carousel-b" class="carousel carousel--nav"
     data-flickity='{ "asNavFor": "#carousel-a", "groupCells": 3 }'>
     <div class="cell">1</div>
     <div class="cell">2</div>
@@ -72,6 +71,39 @@
     <div class="cell">7</div>
     <div class="cell">8</div>
     <div class="cell">9</div>
+  </div>
+
+
+  <h2>main grouped</h2>
+
+  <div id="carousel-c" class="carousel"
+    data-flickity='{ "groupCells": true }'>
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell cell--width2">4</div>
+    <div class="cell  cell--width2">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+    <div class="cell">9</div>
+    <div class="cell">10</div>
+    <div class="cell">11</div>
+  </div>
+
+  <div id="carousel-d" class="carousel carousel--nav"
+    data-flickity='{ "asNavFor": "#carousel-c" }'>
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+    <div class="cell">7</div>
+    <div class="cell">8</div>
+    <div class="cell">9</div>
+    <div class="cell">10</div>
+    <div class="cell">11</div>
   </div>
 
 <script src="../bower_components/get-size/get-size.js"></script>
