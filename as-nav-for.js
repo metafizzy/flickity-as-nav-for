@@ -1,5 +1,5 @@
 /*!
- * Flickity asNavFor v2.0.1
+ * Flickity asNavFor v2.0.2
  * enable asNavFor for Flickity
  */
 
@@ -78,13 +78,15 @@ proto.setNavCompanion = function( elem ) {
 };
 
 proto.navCompanionSelect = function( isInstant ) {
-  if ( !this.navCompanion || !this.navCompanion.selectedCells ) {
+  // wait for companion & selectedCells first. #8
+  var companionCells = this.navCompanion && this.navCompanion.selectedCells;
+  if ( !companionCells ) {
     return;
   }
   // select slide that matches first cell of slide
-  var selectedCell = this.navCompanion.selectedCells[0];
+  var selectedCell = companionCells[0];
   var firstIndex = this.navCompanion.cells.indexOf( selectedCell );
-  var lastIndex = firstIndex + this.navCompanion.selectedCells.length - 1;
+  var lastIndex = firstIndex + companionCells.length - 1;
   var selectIndex = Math.floor( lerp( firstIndex, lastIndex,
     this.navCompanion.cellAlign ) );
   this.selectCell( selectIndex, false, isInstant );

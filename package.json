@@ -1,6 +1,6 @@
 {
   "name": "flickity-as-nav-for",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Enable asNavFor for Flickity",
   "main": "as-nav-for.js",
   "dependencies": {
