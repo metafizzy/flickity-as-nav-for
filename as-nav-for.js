@@ -78,7 +78,7 @@ proto.setNavCompanion = function( elem ) {
 };
 
 proto.navCompanionSelect = function( isInstant ) {
-  if ( !this.navCompanion ) {
+  if ( !this.navCompanion || !this.navCompanion.selectedCells ) {
     return;
   }
   // select slide that matches first cell of slide
