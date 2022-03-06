@@ -29,12 +29,12 @@ Add `as-nav-for.js` to your scripts, after including Flickity.
 
 ### Download
 
-+ [as-nav-for.js](https://unpkg.com/flickity-as-nav-for@2/as-nav-for.js)
++ [as-nav-for.js](https://unpkg.com/flickity-as-nav-for@3/as-nav-for.js)
 
 ### CDN
 
 ``` html
-<script src="https://unpkg.com/flickity-as-nav-for@2/as-nav-for.js"></script>
+<script src="https://unpkg.com/flickity-as-nav-for@3/as-nav-for.js"></script>
 ```
 
 ### Package managers
