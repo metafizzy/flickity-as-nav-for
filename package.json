@@ -1,15 +1,22 @@
 {
   "name": "flickity-as-nav-for",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Enable asNavFor for Flickity",
   "main": "as-nav-for.js",
   "dependencies": {
-    "flickity": "^2.0.0",
-    "fizzy-ui-utils": "^2.0.0"
+    "fizzy-ui-utils": "^3.0.0"
   },
-  "devDependencies": {},
+  "peerDependencies": {
+    "flickity": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.10.0",
+    "eslint-plugin-metafizzy": "^2.0.1",
+    "qunit": "^2.18.0"
+  },
   "scripts": {
-    "test": "echo \"Open test/ in browser\" && exit 1"
+    "test": "npm run lint",
+    "lint": "npx eslint ."
   },
   "repository": {
     "type": "git",

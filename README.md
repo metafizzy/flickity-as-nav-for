@@ -1,6 +1,6 @@
 # Flickity asNavFor
 
-Enables `asNavFor` option for [Flickity](http://flickity.metafizzy.co/), where one gallery is navigation or another.
+Enables `asNavFor` option for [Flickity](https://flickity.metafizzy.co/), where one gallery is navigation or another.
 
 + Clicking the nav gallery will select the content gallery
 + Selecting the content gallery will sync to the nav gallery
@@ -22,6 +22,28 @@ asNavFor: '.gallery-a'
 asNavFor: document.querySelector('.gallery-a')
 // set as an element
 ```
+
+## Install
+
+Add `as-nav-for.js` to your scripts, after including Flickity.
+
+### Download
+
++ [as-nav-for.js](https://unpkg.com/flickity-as-nav-for@2/as-nav-for.js)
+
+### CDN
+
+``` html
+<script src="https://unpkg.com/flickity-as-nav-for@2/as-nav-for.js"></script>
+```
+
+### Package managers
+
+npm: `npm install flickity-as-nav-for`
+
+Yarn: `yarn add flickity-as-nav-for`
+
+## Usage
 
 ### jQuery
 
@@ -55,27 +77,15 @@ var flktyB = new Flickity( '.gallery-b', {
 
 ## Install
 
-`as-nav-for.js` is included with the Flickity `pkgd.js` files. If you are using those, you do not need to install.
-
 Bower: `bower install flickity-as-nav-for --save`
 
 npm: `npm install flickity-as-nav-for`
 
-### RequireJS
+### Webpack
 
 ``` js
-requirejs( [ 'path/to/flickity-as-nav-for/as-nav-for' ], function( Flickity ) {
-  var flktyA = new Flickity('.gallery-a');
-  var flktyB = new Flickity( '.gallery-b', {
-    asNavFor: '.gallery-a'
-  });
-});
-```
-
-### Browserify
-
-``` js
-var Flickity = require('flickity-as-nav-for');
+const Flickity = require('flickity');
+require('flickity-as-nav-for');
 
 var flktyA = new Flickity('.gallery-a');
 var flktyB = new Flickity( '.gallery-b', {
@@ -87,4 +97,4 @@ var flktyB = new Flickity( '.gallery-b', {
 
 MIT license
 
-By [Metafizzy](http://metafizzy.co)
+By [Metafizzy](https://metafizzy.co)
